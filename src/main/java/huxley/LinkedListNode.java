@@ -4,8 +4,6 @@ public class LinkedListNode<T> {
     public T item;
     public LinkedListNode<T> next;
 
-    LinkedListNode() {}
-
     LinkedListNode(T item) {
         this.item = item;
     }

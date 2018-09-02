@@ -3,24 +3,15 @@ package huxley.P263_intersecao_listas;
 import huxley.LinkedList;
 import huxley.LinkedListNode;
 
-import java.io.InputStream;
 import java.util.Scanner;
 
 public class Problem263 {
-    private static InputStream buffer = System.in;
-
-    Problem263() {}
-
-    Problem263(InputStream buffer) {
-        Problem263.buffer = buffer;
-    }
-
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         int n; //variavel que sera usada para ler os inteiros da entrada
         LinkedList<Integer> list1 = new LinkedList<>(), list2 = new LinkedList<>(); //cria as 2 listas que armazenarao 20 elementos, cada uma
         LinkedList<Integer> interseccao = new LinkedList<>(); //cria a lista que armazenara os elementos que estao presentes em ambas as listas, a interseccao
 
-        Scanner scan = new Scanner(buffer);
+        Scanner scan = new Scanner(System.in);
 
         int i;
         for (i = 0; i < 20; i++) {
@@ -43,6 +34,6 @@ public class Problem263 {
 
         interseccao.sort(); //ordena a lista INTERSECCAO
 
-        System.out.print(interseccao.toString().replaceAll(",", System.lineSeparator())); //imprime a lista INTERSECCAO
+        System.out.print(interseccao.toString().replaceAll(",", "\n")); //imprime a lista INTERSECCAO
     }
 }
