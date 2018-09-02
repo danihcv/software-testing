@@ -34,6 +34,6 @@ public class Problem263 {
 
         interseccao.sort(); //ordena a lista INTERSECCAO
 
-        System.out.print(interseccao.toString().replaceAll(",", "\n")); //imprime a lista INTERSECCAO
+        System.out.print(interseccao.toString("\n")); //imprime a lista INTERSECCAO
     }
 }

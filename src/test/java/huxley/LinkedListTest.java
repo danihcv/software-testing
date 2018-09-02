@@ -9,26 +9,26 @@ public class LinkedListTest {
     void init() {
         LinkedList<Integer> list = new LinkedList<>();
         assertNull(list.head);
-        assertEquals("VAZIO", list.toString());
+        assertEquals("VAZIO", list.toString(""));
         assertFalse(list.contains(5));
         assertFalse(list.contains(null));
 
         list = new LinkedList<>(null);
         assertNull(list.head);
-        assertEquals("VAZIO", list.toString());
+        assertEquals("VAZIO", list.toString(""));
 
         LinkedListNode<Integer> node = new LinkedListNode<>(1);
         list = new LinkedList<>(node);
         assertEquals(node, list.head);
         assertNull(list.head.next);
-        assertEquals("1", list.toString());
+        assertEquals("1", list.toString(""));
         assertTrue(list.contains(1));
         assertFalse(list.contains(10));
         assertFalse(list.contains(5));
         assertFalse(list.contains(null));
 
         list.sort();
-        assertEquals("1", list.toString());
+        assertEquals("1", list.toString(""));
     }
 
 
@@ -38,7 +38,7 @@ public class LinkedListTest {
 
         list.addToBegin(10);
         assertEquals(new Integer(10), list.head.item);
-        assertEquals("10,1", list.toString());
+        assertEquals("10,1", list.toString(","));
         assertFalse(list.contains(2));
         assertTrue(list.contains(1));
         assertTrue(list.contains(10));
@@ -54,7 +54,7 @@ public class LinkedListTest {
         list.addToBegin(70);
         list.addToBegin(99);
         assertEquals(new Integer(99), list.head.item);
-        assertEquals("99,70,80,60,500000,45,50,10,1", list.toString());
+        assertEquals("99,70,80,60,500000,45,50,10,1", list.toString(","));
     }
 
     @Test
@@ -66,7 +66,7 @@ public class LinkedListTest {
 
         list.addToBegin(10);
         list.sort();
-        assertEquals("1,10", list.toString());
+        assertEquals("1,10", list.toString(","));
 
         list.addToBegin(2);
         list.addToBegin(9999999);
@@ -74,7 +74,7 @@ public class LinkedListTest {
         list.addToBegin(123);
         list.addToBegin(0);
         list.sort();
-        assertEquals("0,1,2,10,123,777,9999999", list.toString());
+        assertEquals("0,1,2,10,123,777,9999999", list.toString(","));
         assertTrue(list.contains(1));
         assertTrue(list.contains(10));
     }

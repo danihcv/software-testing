@@ -9,17 +9,16 @@ public class LinkedList<T extends Comparable<T>> {
         this.head = head;
     }
 
-    @Override
-    public String toString() {
+    public String toString(String separator) {
         StringBuilder str = new StringBuilder();
         LinkedListNode<T> head = this.head;
 
         if (head == null) {
             return "VAZIO";
         } else {
-            for (boolean addColon = false; head != null; head = head.next) {
-                if (addColon) {
-                    str.append(',');
+            for (boolean separate = false; head != null; head = head.next) {
+                if (separate) {
+                    str.append(separator);
                 }
 
                 if (head.next == null) {
@@ -27,7 +26,7 @@ public class LinkedList<T extends Comparable<T>> {
                 } else if (head.item != head.next.item) {
                     str.append(head.item);
                 }
-                addColon = true;
+                separate = true;
             }
         }
 
