@@ -1,5 +1,7 @@
-package huxley;
+package huxley.util;
 
+import huxley.util.LinkedList;
+import huxley.util.LinkedListNode;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -58,6 +60,23 @@ public class LinkedListTest {
     }
 
     @Test
+    void addToEnd() {
+        LinkedList<Integer> list = new LinkedList<>();
+
+        list.addToEnd(5);
+        assertEquals(list.head, list.tail);
+        assertEquals(new Integer(5), list.tail.item);
+        assertEquals("5", list.toString(""));
+
+        list.addToEnd(10);
+        list.addToEnd(15);
+        list.addToEnd(20);
+        list.addToEnd(25);
+        list.addToEnd(30);
+        assertEquals("5,10,15,20,25,30", list.toString(","));
+    }
+
+    @Test
     void sort() {
         LinkedList<Integer> list = new LinkedList<>();
         list.addToBegin(1);
@@ -70,8 +89,8 @@ public class LinkedListTest {
 
         list.addToBegin(2);
         list.addToBegin(9999999);
-        list.addToBegin(777);
-        list.addToBegin(123);
+        list.addToEnd(777);
+        list.addToEnd(123);
         list.addToBegin(0);
         list.sort();
         assertEquals("0,1,2,10,123,777,9999999", list.toString(","));
@@ -90,16 +109,46 @@ public class LinkedListTest {
         assertFalse(list.contains(null));
 
         list.addToBegin(2);
-        list.addToBegin(3);
+        list.addToEnd(3);
         list.addToBegin(4);
-        list.addToBegin(5);
+        list.addToEnd(5);
         assertTrue(list.contains(5));
         assertTrue(list.contains(2));
 
-        list.addToBegin(9999999);
+        list.addToEnd(9999999);
         assertTrue(list.contains(9999999));
 
         list.addToBegin(0);
         assertTrue(list.contains(9999999));
+    }
+
+    @Test
+    void toStringTest() {
+        LinkedList<Integer> list = new LinkedList<>();
+
+        list.addToBegin(1);
+        list.addToEnd(2);
+        list.addToBegin(3);
+        list.addToBegin(4);
+        list.addToEnd(5);
+        list.addToEnd(6);
+        list.addToEnd(7);
+        list.addToBegin(10);
+
+        assertEquals("10,4,3,1,2,5,6,7", list.toString(","));
+    }
+
+    @Test
+    void destroy() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.addToEnd(5);
+        list.addToBegin(1);
+
+        assertNotNull(list.head);
+        assertNotNull(list.tail);
+
+        list.destroy();
+        assertNull(list.head);
+        assertNull(list.tail);
     }
 }

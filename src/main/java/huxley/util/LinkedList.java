@@ -1,12 +1,17 @@
-package huxley;
+package huxley.util;
 
 public class LinkedList<T extends Comparable<T>> {
     public LinkedListNode<T> head;
+    public LinkedListNode<T> tail;
 
     public LinkedList() {}
 
     public LinkedList(LinkedListNode<T> head) {
         this.head = head;
+        this.tail = head;
+        if (this.head != null) {
+            this.head.index = 0;
+        }
     }
 
     public String toString(String separator) {
@@ -34,8 +39,29 @@ public class LinkedList<T extends Comparable<T>> {
     }
 
     public LinkedListNode<T> addToBegin(T newItem) {
-        this.head = new LinkedListNode<>(newItem, this.head);
+        LinkedListNode<T> newNode = new LinkedListNode<>(newItem, this.head);
+        if (head == null) {
+            this.tail = newNode;
+        }
+        this.head = newNode;
+
+        int i = 0;
+        for (LinkedListNode<T> aux = this.head; aux != null; aux = aux.next, i++) {
+            aux.index = i;
+        }
         return this.head;
+    }
+
+    public LinkedListNode<T> addToEnd(T newItem) {
+        LinkedListNode<T> newNode = new LinkedListNode<>(newItem);
+        if (tail == null) {
+            this.head = this.tail = newNode;
+        } else {
+            this.tail.next = newNode;
+            this.tail.next.index = this.tail.index + 1;
+            this.tail = this.tail.next;
+        }
+        return this.tail;
     }
 
     public LinkedList sort() {
@@ -62,5 +88,9 @@ public class LinkedList<T extends Comparable<T>> {
             }
         }
         return false;
+    }
+
+    public LinkedListNode<T> destroy(){
+        return this.head = this.tail = null;
     }
 }

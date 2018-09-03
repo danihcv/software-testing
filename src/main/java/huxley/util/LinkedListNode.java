@@ -1,7 +1,8 @@
-package huxley;
+package huxley.util;
 
 public class LinkedListNode<T> {
     public T item;
+    public int index;
     public LinkedListNode<T> next;
 
     LinkedListNode(T item) {

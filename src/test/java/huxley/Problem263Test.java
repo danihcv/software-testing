@@ -1,27 +1,11 @@
-package huxley.P263_intersecao_listas;
+package huxley;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import huxley.P263_intersecao_listas.Problem263;
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Problem263Test {
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
-
-    private final InputStream originalIn = System.in;
-
-    @BeforeEach
-    void setUpStreams() {
-        System.setOut(new PrintStream(outContent));
-    }
-
+public class Problem263Test extends GenericTest {
     String setUpSimpleIntersec() {
         String testCase = "1\n" +
                 "2\n" +
@@ -63,9 +47,7 @@ public class Problem263Test {
                 "27\n" +
                 "28\n" +
                 "29\n";
-        byte[] testBytes = testCase.getBytes();
-        InputStream input = new ByteArrayInputStream(testBytes);
-        System.setIn(input);
+        setInputStreamArray(testCase);
 
         return "10\n" +
                 "11\n" +
@@ -121,9 +103,7 @@ public class Problem263Test {
                 "0\n" +
                 "0\n" +
                 "1\n";
-        byte[] testBytes = testCase.getBytes();
-        InputStream input = new ByteArrayInputStream(testBytes);
-        System.setIn(input);
+        setInputStreamArray(testCase);
 
         return "1\n20";
     }
@@ -169,9 +149,7 @@ public class Problem263Test {
                 "2\n" +
                 "2\n" +
                 "2\n";
-        byte[] testBytes = testCase.getBytes();
-        InputStream input = new ByteArrayInputStream(testBytes);
-        System.setIn(input);
+        setInputStreamArray(testCase);
 
         return "VAZIO";
     }
@@ -217,17 +195,9 @@ public class Problem263Test {
                 "1\n" +
                 "1\n" +
                 "1\n";
-        byte[] testBytes = testCase.getBytes();
-        InputStream input = new ByteArrayInputStream(testBytes);
-        System.setIn(input);
+        setInputStreamArray(testCase);
 
         return "1";
-    }
-
-    @AfterEach
-    void restoreStreams() {
-        System.setOut(originalOut);
-        System.setIn(originalIn);
     }
 
     @Test

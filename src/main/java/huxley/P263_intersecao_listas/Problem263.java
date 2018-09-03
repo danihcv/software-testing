@@ -1,7 +1,7 @@
 package huxley.P263_intersecao_listas;
 
-import huxley.LinkedList;
-import huxley.LinkedListNode;
+import huxley.util.LinkedList;
+import huxley.util.LinkedListNode;
 
 import java.util.Scanner;
 
