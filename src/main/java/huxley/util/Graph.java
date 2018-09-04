@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Graph<K, V> {
-    private Map<K, Map<K, V>> edges;
+    Map<K, Map<K, V>> edges;
 
     public Graph() {
         this.edges = new HashMap<>();
