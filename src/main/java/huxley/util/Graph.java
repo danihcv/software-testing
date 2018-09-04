@@ -19,6 +19,9 @@ public class Graph<K, V> {
     }
 
     public void addEdge(K origin, K destiny, V cost) throws NullPointerException {
+        if (this.edges.get(destiny) == null) {
+            throw new NullPointerException();
+        }
         this.edges.get(origin).put(destiny, cost);
     }
 
