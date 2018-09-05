@@ -4,7 +4,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -26,7 +25,7 @@ class GraphTest {
 
     private void addDefaultVertices() {
         for (int i = 1; i <= 10; i++) {
-            graph.addVertex(1);
+            graph.addVertex(i);
         }
     }
 
@@ -81,7 +80,23 @@ class GraphTest {
         Random rand = new Random();
 
         for (int i = 0; i < 50; i++) {
-            assertNull(this.graph.get(rand.nextInt()));
+            assertNull(this.graph.get(rand.nextInt()), "Get retornou um valor diferente de null para vértices inexistentes");
         }
+
+        addDefaultVertices();
+        Map<Integer, Integer> emptyMap = new HashMap<>();
+        for (int i = 1; i <= 10; i++) {
+            assertEquals(emptyMap, this.graph.get(i), "Get retornou um valor diferente de null para vértices válidos mas sem aresta");
+        }
+        assertNull(this.graph.get(0), "Get retonou valor diferente de null para um vértice inválido");
+
+        Map<Integer, Integer> expectedMap = new HashMap<>();
+        expectedMap.put(2, 0);
+        this.graph.addEdge(1, 2, 0);
+        this.graph.addEdge(1, 3, 0);
+        this.graph.addEdge(4, 3, 0);
+        assertEquals(expectedMap, this.graph.get(1), "Get retornou um mapa diferente do esperado");
+        assertNull(this.graph.get(-5),
+                "Get retornou um valor diferente de null para um vértice inexistente, após adicionar uma aresta válida ao grafo");
     }
 }

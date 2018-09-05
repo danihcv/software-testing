@@ -8,7 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-class GenericTest {
+abstract class GenericTest {
     final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
@@ -25,7 +25,7 @@ class GenericTest {
         System.setIn(originalIn);
     }
 
-    void setInputStreamArray(String inputStr) {
+    void setInputStream(String inputStr) {
         byte[] testBytes = inputStr.getBytes();
         InputStream input = new ByteArrayInputStream(testBytes);
         System.setIn(input);

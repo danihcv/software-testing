@@ -47,7 +47,7 @@ public class Problem263Test extends GenericTest {
                 "27\n" +
                 "28\n" +
                 "29\n";
-        setInputStreamArray(testCase);
+        setInputStream(testCase);
 
         return "10\n" +
                 "11\n" +
@@ -103,7 +103,7 @@ public class Problem263Test extends GenericTest {
                 "0\n" +
                 "0\n" +
                 "1\n";
-        setInputStreamArray(testCase);
+        setInputStream(testCase);
 
         return "1\n20";
     }
@@ -149,7 +149,7 @@ public class Problem263Test extends GenericTest {
                 "2\n" +
                 "2\n" +
                 "2\n";
-        setInputStreamArray(testCase);
+        setInputStream(testCase);
 
         return "VAZIO";
     }
@@ -195,7 +195,7 @@ public class Problem263Test extends GenericTest {
                 "1\n" +
                 "1\n" +
                 "1\n";
-        setInputStreamArray(testCase);
+        setInputStream(testCase);
 
         return "1";
     }
