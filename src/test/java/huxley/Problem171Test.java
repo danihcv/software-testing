@@ -3,18 +3,10 @@ package huxley;
 import huxley.P171_reduzindo_mapas.Problem171;
 import org.junit.jupiter.api.Test;
 
-import org.junit.jupiter.api.function.Executable;
-import java.net.InterfaceAddress;
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Problem171Test extends GenericTest {
-    interface TestCase {
-        int setTest();
-    }
-
-    int setUpNormalGraph() {
+class Problem171Test extends GenericTest {
+    private int setUpNormalGraph() {
         setInputStream("5 6\n" +
                 "1 2 15\n" +
                 "1 3 10\n" +
@@ -26,13 +18,13 @@ public class Problem171Test extends GenericTest {
         return 34;
     }
 
-    int setUpEmptyGraph() {
+    private int setUpEmptyGraph() {
         setInputStream("0 0\n");
 
         return 0;
     }
 
-    int setUpCyclicalGraph() {
+    private int setUpCyclicalGraph() {
         setInputStream("5 5\n" +
                 "2 3 2\n" +
                 "3 4 3\n" +
@@ -43,7 +35,7 @@ public class Problem171Test extends GenericTest {
         return 10;
     }
 
-    int setUpCyclicalGraphWithSameWeights() {
+    private int setUpCyclicalGraphWithSameWeights() {
         setInputStream("10 10\n" +
                 "1 2 5\n" +
                 "2 3 5\n" +
@@ -58,7 +50,7 @@ public class Problem171Test extends GenericTest {
         return 45;
     }
 
-    int setUpBigGraph() {
+    private int setUpBigGraph() {
         setInputStream("13 21\n" +
                 "1 13 7\n" +
                 "1 10 10\n" +
@@ -95,7 +87,7 @@ public class Problem171Test extends GenericTest {
         };
 
         for (TestCase executable : executables) {
-            int expected = executable.setTest();
+            int expected = (int) executable.setTest();
             Problem171.main(new String[]{});
             assertEquals(expected, Integer.parseInt(outContent.toString()),
                     "Resposta errada! Esperado: (" + expected + "), obtido: (" + outContent.toString() + ")");

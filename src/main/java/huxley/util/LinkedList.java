@@ -6,7 +6,7 @@ public class LinkedList<T extends Comparable<T>> {
 
     public LinkedList() {}
 
-    public LinkedList(LinkedListNode<T> head) {
+    LinkedList(LinkedListNode<T> head) {
         this.head = head;
         this.tail = head;
         if (this.head != null) {

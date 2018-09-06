@@ -43,7 +43,7 @@ public class Problem171 {
         System.out.print(mstCost);
     }
 
-    public static void process(int vertex) {
+    private static void process(int vertex) {
         if (vertex <= visited.length) {
             visited[vertex - 1] = true;
 

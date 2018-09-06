@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Problem263Test extends GenericTest {
-    String setUpSimpleIntersec() {
+class Problem263Test extends GenericTest {
+    private String setUpSimpleIntersec() {
         String testCase = "1\n" +
                 "2\n" +
                 "3\n" +
@@ -62,7 +62,7 @@ public class Problem263Test extends GenericTest {
                 "20";
     }
 
-    String setUpFirstAndLastIntersec() {
+    private String setUpFirstAndLastIntersec() {
         String testCase = "1\n" +
                 "2\n" +
                 "3\n" +
@@ -108,7 +108,7 @@ public class Problem263Test extends GenericTest {
         return "1\n20";
     }
 
-    String setUpEmptyIntersec() {
+    private String setUpEmptyIntersec() {
         String testCase = "1\n" +
                 "1\n" +
                 "1\n" +
@@ -154,7 +154,7 @@ public class Problem263Test extends GenericTest {
         return "VAZIO";
     }
 
-    String setUpSingleElementIntersec() {
+    private String setUpSingleElementIntersec() {
         String testCase = "1\n" +
                 "1\n" +
                 "1\n" +
@@ -202,25 +202,25 @@ public class Problem263Test extends GenericTest {
 
     @Test
     void main() {
-        String expected = setUpSimpleIntersec();
-        Problem263.main(new String[]{});
-        assertEquals(expected, outContent.toString(), "Interseção de 10 itens falhou");
-        outContent.reset();
+        TestCase[] testCases = new TestCase[] {
+                this::setUpSimpleIntersec,
+                this::setUpFirstAndLastIntersec,
+                this::setUpEmptyIntersec,
+                this::setUpSingleElementIntersec
+        };
 
-        expected = setUpFirstAndLastIntersec();
-        Problem263.main(new String[]{});
-        assertEquals(expected, outContent.toString(),
-                "Intersão do primeiro elemento de um array com o último do outro, e vice-versa, falhou");
-        outContent.reset();
+        String[] assertMessages = new String[]{
+                "Interseção de 10 itens falhou",
+                "Intersão do primeiro elemento de um array com o último do outro, e vice-versa, falhou",
+                "Interseção vazia não indentificada",
+                "Interseção com elemento único repetido várias vezes falhou"
+        };
 
-        expected = setUpEmptyIntersec();
-        Problem263.main(new String[]{});
-        assertEquals(expected, outContent.toString(), "Interseção vazia não indentificada");
-        outContent.reset();
-
-        expected = setUpSingleElementIntersec();
-        Problem263.main(new String[]{});
-        assertEquals(expected, outContent.toString(), "Interseção com elemento único repetido várias vezes falhou");
-        outContent.reset();
+        for (int i = 0; i < testCases.length; i++) {
+            String expected = (String) testCases[i].setTest();
+            Problem263.main(new String[]{});
+            assertEquals(expected, outContent.toString(), assertMessages[i]);
+            outContent.reset();
+        }
     }
 }

@@ -14,6 +14,10 @@ abstract class GenericTest {
 
     private final InputStream originalIn = System.in;
 
+    interface TestCase<T> {
+        T setTest();
+    }
+
     @BeforeEach
     void setUpStreams() {
         System.setOut(new PrintStream(outContent));
