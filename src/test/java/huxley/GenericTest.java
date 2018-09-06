@@ -3,10 +3,7 @@ package huxley;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
+import java.io.*;
 
 abstract class GenericTest {
     final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -15,7 +12,7 @@ abstract class GenericTest {
     private final InputStream originalIn = System.in;
 
     interface TestCase<T> {
-        T setTest();
+        T setTest() throws IOException;
     }
 
     @BeforeEach

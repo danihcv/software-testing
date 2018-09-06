@@ -3,6 +3,8 @@ package huxley;
 import huxley.P263_intersecao_listas.Problem263;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem263Test extends GenericTest {
@@ -201,7 +203,7 @@ class Problem263Test extends GenericTest {
     }
 
     @Test
-    void main() {
+    void main() throws IOException {
         TestCase[] testCases = new TestCase[] {
                 this::setUpSimpleIntersec,
                 this::setUpFirstAndLastIntersec,

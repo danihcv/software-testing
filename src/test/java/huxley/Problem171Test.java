@@ -3,6 +3,8 @@ package huxley;
 import huxley.P171_reduzindo_mapas.Problem171;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Problem171Test extends GenericTest {
@@ -77,7 +79,7 @@ class Problem171Test extends GenericTest {
     }
 
     @Test
-    void main() {
+    void main() throws IOException {
         TestCase[] executables = new TestCase[]{
                 this::setUpNormalGraph,
                 this::setUpEmptyGraph,
