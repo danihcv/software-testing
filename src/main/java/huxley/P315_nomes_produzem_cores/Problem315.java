@@ -3,7 +3,7 @@ package huxley.P315_nomes_produzem_cores;
 import java.util.Scanner;
 
 public class Problem315 {
-    static int hexToDecimal(String hex) {
+    public static int hexToDecimal(String hex) {
         int value = 0;
         for (int i = 0; i < hex.length(); i++) {
             int aux;

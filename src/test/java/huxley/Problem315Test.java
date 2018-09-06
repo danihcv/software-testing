@@ -16,12 +16,59 @@ class Problem315Test extends GenericTest {
                 "dad100",
                 "100dad",
                 "6973",
-                "a0b1c2d3e4f5",
+                "a0b1c2d",
                 "aaaaa",
-                "aff"
+                "aff",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f"
         };
 
-        int[] expected = new int[]{};
+        int[] expected = new int[]{
+                57005,
+                17683,
+                51966,
+                14340352,
+                1052077,
+                26995,
+                168500269,
+                699050,
+                2815,
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+        };
+
+        for (int i = 0; i < testCases.length; i++) {
+            assertEquals(expected[i], Problem315.hexToDecimal(testCases[i]));
+        }
     }
 
     @Test
