@@ -16,11 +16,11 @@ public class Problem171 {
         int n = scan.nextInt(), m = scan.nextInt();
 
         graph = new Graph<>();
-        visited = new boolean[n + 1];
+        visited = new boolean[n];
         priorityQueue = new PriorityQueue<>();
 
-        for (int i = 1; i <= n; i++) {
-            graph.addVertex(i);
+        for (int i = 0; i < n; i++) {
+            graph.addVertex(i + 1);
             visited[i] = false;
         }
 
@@ -34,21 +34,23 @@ public class Problem171 {
         int mstCost = 0;
         while (!priorityQueue.isEmpty()) {
             Entry front = priorityQueue.remove();
-            if (!visited[front.key]){
+            if (!visited[front.key - 1]){
                 mstCost += front.value;
                 process(front.key);
             }
         }
 
-        System.out.println(mstCost);
+        System.out.print(mstCost);
     }
 
     public static void process(int vertex) {
-        visited[vertex] = true;
+        if (vertex <= visited.length) {
+            visited[vertex - 1] = true;
 
-        for (Map.Entry<Integer, Integer> pair : graph.get(vertex).entrySet()) {
-            if (!visited[pair.getKey()]) {
-                priorityQueue.add(new Entry(pair.getKey(), pair.getValue()));
+            for (Map.Entry<Integer, Integer> pair : graph.get(vertex).entrySet()) {
+                if (!visited[pair.getKey() - 1]) {
+                    priorityQueue.add(new Entry(pair.getKey(), pair.getValue()));
+                }
             }
         }
     }
