@@ -54,7 +54,7 @@ public class Problem546 {
     public static void main(String[] args) {
         scan = new Scanner(System.in);
 
-        Tree tree = formTree(proccesInput(scan.nextLine().replaceAll(" ", "")));
+        Tree tree = formTree(proccesInput(scan.nextLine()));
 
         System.out.println(tree == null || tree.isBinarySearchTree() ? "VERDADEIRO" : "FALSO");
     }

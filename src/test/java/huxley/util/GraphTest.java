@@ -92,6 +92,7 @@ class GraphTest {
 
         Map<Integer, Integer> expectedMap = new HashMap<>();
         expectedMap.put(2, 0);
+        expectedMap.put(3, 0);
         this.graph.addEdge(1, 2, 0);
         this.graph.addEdge(1, 3, 0);
         this.graph.addEdge(4, 3, 0);
