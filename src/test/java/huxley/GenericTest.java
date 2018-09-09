@@ -6,6 +6,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 abstract class GenericTest {
     final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -37,11 +39,19 @@ abstract class GenericTest {
         System.setIn(input);
     }
 
+    void setInputStream(File file) throws IOException {
+        setInputStream(fileContentToString(file));
+    }
+
     void setUpInputAndExpectedListsFromResources(String folder) {
         File dir = new File(resourcesPath + folder);
         FileFilter fileInputFilter = new WildcardFileFilter("*.in", IOCase.INSENSITIVE);
         FileFilter fileOutputFilter = new WildcardFileFilter("*.out", IOCase.INSENSITIVE);
         inputList = dir.listFiles(fileInputFilter);
         expectedList = dir.listFiles(fileOutputFilter);
+    }
+
+    String fileContentToString(File file) throws IOException {
+        return new String(Files.readAllBytes(Paths.get(file.getPath())));
     }
 }
