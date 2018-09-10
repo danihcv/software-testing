@@ -1,13 +1,11 @@
-package huxley.P546_arvore_busca_binaria;
+package huxley.P547_profundidade_arvore_binaria;
 
 import huxley.util.Tree;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Problem546 {
-    private static Scanner scan;
-
+public class Problem547 {
     private static ArrayList<String> proccesInput(String str) {
         ArrayList<String> treeList = new ArrayList<>();
 
@@ -33,10 +31,18 @@ public class Problem546 {
     }
 
     public static void main(String[] args) {
-        scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
+        Tree binTree = Tree.formTree(proccesInput(scan.nextLine()));
 
-        Tree tree = Tree.formTree(proccesInput(scan.nextLine()));
+        int element = scan.nextInt();
 
-        System.out.println(tree == null || tree.isBinarySearchTree() ? "VERDADEIRO" : "FALSO");
+        assert binTree != null;
+        int res = binTree.contains(element);
+        if (res == -1) {
+            System.out.println("NAO ESTA NA ARVORE");
+        } else {
+            System.out.println("ESTA NA ARVORE");
+        }
+        System.out.printf("%d" + System.lineSeparator(), res);
     }
 }
