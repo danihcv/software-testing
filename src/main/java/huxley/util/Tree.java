@@ -3,7 +3,7 @@ package huxley.util;
 import java.util.ArrayList;
 
 public class Tree {
-    private int item;
+    public int item;
     public Tree left, right;
 
     public Tree(int item) {
@@ -25,7 +25,7 @@ public class Tree {
     public static Tree formTree(ArrayList<String> treeList) {
         Tree newBt;
 
-        String pop = treeList.remove(0); // (
+        String pop = treeList.remove(0); // ) ou number
         if (!pop.equals(")")) {
             newBt = new Tree(Integer.parseInt(pop));
 
@@ -46,8 +46,9 @@ public class Tree {
     }
 
     private int contains(Tree bt, int element, int nivelAt) {
-        if (bt == null)
+        if (bt == null) {
             return -1;
+        }
         if (bt.item == element) {
             return nivelAt;
         }

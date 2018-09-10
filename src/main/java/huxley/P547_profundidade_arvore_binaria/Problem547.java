@@ -17,7 +17,7 @@ public class Problem547 {
             if (Character.isDigit(str.charAt(i))) {
                 int number = str.charAt(i) - '0';
                 while (i + 1 < str.length() && Character.isDigit(str.charAt(i + 1))) {
-                    number = number * 10 + str.charAt(i) - '0';
+                    number = number * 10 + str.charAt(i + 1) - '0';
                     ++i;
                 }
                 treeList.add(String.valueOf(number));
