@@ -28,4 +28,8 @@ public class Graph<K, V> {
     public Map<K, V> get(K vertex) {
         return edges.get(vertex);
     }
+
+    public int size() {
+        return edges.size();
+    }
 }

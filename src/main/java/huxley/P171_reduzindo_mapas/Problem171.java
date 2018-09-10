@@ -56,10 +56,10 @@ public class Problem171 {
     }
 
     public static class Entry implements Comparable<Entry> {
-        Integer key;
-        Integer value;
+        public Integer key;
+        public Integer value;
 
-        Entry(int key, int value) {
+        public Entry(int key, int value) {
             this.key = key;
             this.value = value;
         }
