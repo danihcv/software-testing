@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LinkedListTest {
+class LinkedListTest {
     @Test
     void init() {
         LinkedList<Integer> list = new LinkedList<>();
@@ -127,6 +127,7 @@ public class LinkedListTest {
         list.addToBegin(1);
         list.addToEnd(2);
         list.addToBegin(3);
+        list.addToBegin(4);
         list.addToBegin(4);
         list.addToEnd(5);
         list.addToEnd(6);

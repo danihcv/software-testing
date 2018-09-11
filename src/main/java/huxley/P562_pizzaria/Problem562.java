@@ -15,12 +15,12 @@ public class Problem562 {
         }
 
         PriorityQueue<Problem171.Entry> pq = new PriorityQueue<>();
-        pq.add(new Problem171.Entry(costs[s], s));
+        pq.add(new Problem171.Entry(s, costs[s]));
 
         while(!pq.isEmpty()) {
             Problem171.Entry pop = pq.remove();
-            int curIdx = pop.value;
-            int curCost = pop.key;
+            int curIdx = pop.key;
+            int curCost = pop.value;
 
             if (visitados[curIdx] == 0) {
                 visitados[curIdx] = 1;
@@ -28,7 +28,7 @@ public class Problem562 {
                 for (Map.Entry<Integer, Integer> node : vizinhos.entrySet()) {
                     if (costs[curIdx] + node.getValue() < costs[node.getKey()]) {
                         costs[node.getKey()] = costs[curIdx] + node.getValue();
-                        pq.add(new Problem171.Entry(costs[node.getKey()], node.getKey()));
+                        pq.add(new Problem171.Entry(node.getKey(), costs[node.getKey()]));
                     }
                 }
             }

@@ -22,16 +22,42 @@ public class Tree {
         return isBinarySearchTree(root.left) && isBinarySearchTree(root.right);
     }
 
+    public static Tree formTree(String treeStr) {
+        ArrayList<String> treeList = new ArrayList<>();
+
+        int signal = 1;
+        for (int i = 0; i < treeStr.length(); i++) {
+            if (treeStr.charAt(i) == ' ') {
+                continue;
+            }
+
+            if (treeStr.charAt(i) == '-') {
+                signal = -1;
+            } else if (Character.isDigit(treeStr.charAt(i))) {
+                int number = treeStr.charAt(i) - '0';
+                while (i + 1 < treeStr.length() && Character.isDigit(treeStr.charAt(i + 1))) {
+                    number = number * 10 + treeStr.charAt(i + 1) - '0';
+                    ++i;
+                }
+                treeList.add(String.valueOf(number * signal));
+                signal = 1;
+            } else {
+                treeList.add(String.valueOf(treeStr.charAt(i)));
+            }
+        }
+
+        return formTree(treeList);
+    }
+
     public static Tree formTree(ArrayList<String> treeList) {
+        treeList.remove(0); // (
         Tree newBt;
 
         String pop = treeList.remove(0); // ) ou number
         if (!pop.equals(")")) {
             newBt = new Tree(Integer.parseInt(pop));
 
-            treeList.remove(0); // (
             newBt.left = formTree(treeList);
-            treeList.remove(0); // (
             newBt.right = formTree(treeList);
         } else {
             return null;
@@ -56,12 +82,13 @@ public class Tree {
         int resL = contains(bt.left, element, nivelAt + 1);
         int resR = contains(bt.right, element, nivelAt + 1);
 
-        if (resL == -1 && resR != -1)
+        if (resL == -1 && resR != -1) {
             return resR;
-        else if (resL != -1 && resR == -1)
+        } else if (resL != -1 && resR == -1) {
             return resL;
-        else if (resL != -1)
+        } else if (resL != -1) {
             return Math.min(resL, resR);
+        }
         return -1;
     }
 }

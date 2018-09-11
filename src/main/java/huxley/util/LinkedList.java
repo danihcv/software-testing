@@ -26,12 +26,14 @@ public class LinkedList<T extends Comparable<T>> {
                     str.append(separator);
                 }
 
+                separate = true;
                 if (head.next == null) {
                     str.append(head.item);
                 } else if (head.item != head.next.item) {
                     str.append(head.item);
+                } else {
+                    separate = false;
                 }
-                separate = true;
             }
         }
 
