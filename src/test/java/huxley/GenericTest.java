@@ -52,6 +52,6 @@ abstract class GenericTest {
     }
 
     String fileContentToString(File file) throws IOException {
-        return new String(Files.readAllBytes(Paths.get(file.getPath())));
+        return new String(Files.readAllBytes(Paths.get(file.getPath()))).replaceAll("\r\n|\r|\n", System.lineSeparator());
     }
 }
