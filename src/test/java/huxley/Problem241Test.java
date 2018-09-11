@@ -17,7 +17,7 @@ class Problem241Test extends GenericTest {
                 setInputStream(inputList[i]);
                 String expected = fileContentToString(expectedList[i]);
                 Problem241.main(new String[]{});
-                assertEquals(expected, outContent.toString());
+                assertEquals(expected, outContent.toString(), "Falhou no teste: " + inputList[i].getName());
                 outContent.reset();
             }
         }
