@@ -25,7 +25,7 @@ public class Problem677 {
 
             for (int i = 0; i < str.length(); i++) {
                 String curr = i + 1 < str.length() ? dicionario.get(str.charAt(i + 1)) : null;
-                if (str.charAt(i) == '*' && curr != null && curr.length() != 0) {
+                if (str.charAt(i) == '*' && curr != null) {
                     System.out.printf("%s", dicionario.get(str.charAt(i + 1)));
                     ++i;
                 } else {

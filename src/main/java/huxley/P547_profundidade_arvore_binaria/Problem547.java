@@ -11,7 +11,6 @@ public class Problem547 {
 
         int element = scan.nextInt();
 
-        assert binTree != null;
         int res = binTree.contains(element);
         if (res == -1) {
             System.out.println("NAO ESTA NA ARVORE");

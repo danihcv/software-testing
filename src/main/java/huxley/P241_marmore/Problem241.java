@@ -10,7 +10,7 @@ public class Problem241 {
         boolean found;
         n = scan.nextInt();
         q = scan.nextInt();
-        while (n != 0 && q != 0) {
+        while (n != 0) {
             int[] num = new int[n + 1];
             for (i = 1; i <= n; i++) {
                 num[i] = scan.nextInt();

@@ -15,9 +15,9 @@ public class Tree {
     }
 
     public boolean isBinarySearchTree(Tree root) {
-        if (root == null || root.left == null || root.right == null)
+        if (root == null || (root.left == null && root.right == null))
             return true;
-        if (root.left.item >= root.item || root.right.item < root.item)
+        if ((root.left != null && root.left.item >= root.item) || (root.right != null && root.right.item < root.item))
             return false;
         return isBinarySearchTree(root.left) && isBinarySearchTree(root.right);
     }

@@ -10,6 +10,6 @@ public class Problem546 {
 
         Tree tree = Tree.formTree(scan.nextLine());
 
-        System.out.println(tree == null || tree.isBinarySearchTree() ? "VERDADEIRO" : "FALSO");
+        System.out.println(tree.isBinarySearchTree() ? "VERDADEIRO" : "FALSO");
     }
 }

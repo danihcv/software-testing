@@ -41,6 +41,15 @@ class TreeTest {
         tree.right = Tree.formTree("(1()())");
         assertFalse(tree.isBinarySearchTree(), "Falhou ao verificar que não é uma árvore de busca binária");
 
+        tree = Tree.formTree("(5 (64()()) (10()()))");
+        assertFalse(tree.isBinarySearchTree());
+
+        tree = Tree.formTree("(7 (7()()) (7()()))");
+        assertFalse(tree.isBinarySearchTree());
+
+        tree = Tree.formTree("(10 (1()()) (2()()))");
+        assertFalse(tree.isBinarySearchTree());
+
         assertThrows(Exception.class, () -> Tree.formTree("(5()(412"),
                 "Não disparou exceção ao tentar fazer uma tree com string inválida");
 
